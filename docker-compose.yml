@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  web:
+    image: jbcarpenter1/docker-test
+    ports:
+     - "8080:8080"
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 50M
+        reservations:
+          memory: 50M

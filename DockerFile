@@ -1,7 +1,7 @@
 FROM adoptopenjdk:11-jdk-hotspot
 EXPOSE 8080
 
-ADD restservices.jar /apps
+ADD restservices.jar /apps/
 RUN chmod -R g-rwx,o-rxw /apps
 
 CMD java -jar /apps/restservices.jar
