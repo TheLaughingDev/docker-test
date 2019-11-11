@@ -1,7 +1,8 @@
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+# Deployment for rest services test.
+apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: restservices-deployment
+  name: restservices
 spec:
   selector:
     matchLabels:
@@ -13,7 +14,21 @@ spec:
         app: restservices
     spec:
       containers:
-      - name: restservices-container
+      - name: restservices
         image: jbcarpenter1/docker-test
         ports:
         - containerPort: 8080
+---
+# Service for rest services test.
+apiVersion: v1
+kind: Service
+metadata:
+  name: restservices-service
+spec:
+  selector:
+    app: restservices
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

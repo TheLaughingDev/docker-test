@@ -1,4 +1,4 @@
-FROM adoptopenjdk:11-jdk-hotspot
+FROM amazoncorretto:11
 EXPOSE 8080
 
 ADD restservices.jar /apps/
